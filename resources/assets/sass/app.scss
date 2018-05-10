@@ -1,0 +1,34 @@
+// Fonts
+@import "fonts.scss";
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+// Font-awesome css
+@import '~font-awesome/scss/font-awesome.scss';
+
+// Loader
+@import 'loader.scss';
+
+// Toastr
+@import './../plugins/toastr/toastr.css';
+
+.navbar-laravel {
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+tbody tr {
+	cursor: pointer;
+}
+
+// nav.navbar.navbar-static-top {
+// 	max-heigth: 22px;
+// }
+
+span.select2-selection.select2-selection--single {
+	padding-top: 10px;
+}

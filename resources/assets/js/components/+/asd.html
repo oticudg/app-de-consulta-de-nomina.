@@ -1,0 +1,55 @@
+<template>
+    <div>
+        <div class="col-md-7">
+            <TableComponent class="table-hover table-striped"
+            :columns="columns"
+            :data="data"></TableComponent>
+        </div>
+        <pre class="col-md-5">{{ $data }}</pre>
+    </div>
+</template>
+
+<script>
+    import Table from './partials/Table.vue';
+    export default {
+        components: {
+            'TableComponent': Table
+        },
+        data() {
+            return {
+                columns: [
+                {column: 'id', as: 'n°'},
+                {column: 'name', as: 'Nombre'},
+                {column: 'email', as: 'Correo'},
+                {column: 'module_id', as: 'Modulo'},
+                {column: ' ', as: ' '},
+                ],
+                data: [],
+                modules: [],
+            };
+        },
+        mounted() {
+            this.get();
+        },
+        methods: {
+            get: function () {
+                axios.get('/usuarios')
+                .then(response => {
+                    this.data = response.data[0];
+                    this.modules = response.data[1];
+                });
+            }
+        }
+    }
+</script>
+<!--                   <div class="col-md-6">
+                    <div class="card card-default">
+                      <div class="card-header">Usuarios</div>
+                      <div class="card-body">
+                        <div class="form-group form-inline" v-for="(permission, key, index) in permissions" v-if="!formData.rol.special && permission.module == 'user'">
+                          <label :for="'perm'+index" class="control-label">{{ permission.name }}:</label>
+                          <input :id="'perm'+index" type="checkbox" class="form-control" :value="key" v-model="formData.rol.permissions">
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
